@@ -36,5 +36,12 @@ namespace Distribution.DAL.Infrastructure
 		public int GetProductCount() => products.Count;
 		public Product GetById(int id) => products.First(p => p.Id == id);
 		public Product GetRandom() => products[random.Next(products.Count - 1)];
+
+		public Product Add(string title, decimal price)
+        {
+			var product = new Product(title, price);
+			products.Add(product);
+			return product;
+        }
 	}
 }

@@ -8,5 +8,6 @@ namespace Distribution.DAL.Infrastructure.Interfaces
     public interface IShopRepository
     {
         public Shop GetById(int id);
+        public Shop Add(string title);
     }
 }

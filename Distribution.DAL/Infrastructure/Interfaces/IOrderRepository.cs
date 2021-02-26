@@ -8,5 +8,7 @@ namespace Distribution.DAL.Infrastructure.Interfaces
 	public interface IOrderRepository
 	{
 		public Order GetById(int id);
+		public Order Add(Basket basket, Shop shop, string address);
 	}
+	
 }
