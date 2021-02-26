@@ -12,12 +12,13 @@ namespace Distribution.DAL.Entities
 
         public string FullName { get; set; }
 
-        public List<Basket> baskets = new List<Basket>();
+        public List<Basket> Baskets { get; set; }
 
         public User(string fullName)
         {
             Id = nextId++;
             FullName = fullName;
+            Baskets = new List<Basket>();
         }
     }
 }

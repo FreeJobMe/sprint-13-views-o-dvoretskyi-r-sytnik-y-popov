@@ -11,11 +11,11 @@ namespace Distribution.DAL.Entities
         public string Title { get; set; }
         public List<Position> Positions { get; set; }
 
-        public Shop(string title, List<Position> positions)
+        public Shop(string title)
         {
             Id = nextId++; 
             Title = title;
-            Positions = positions;
+            Positions = new List<Position>();
         }
     }
 }
