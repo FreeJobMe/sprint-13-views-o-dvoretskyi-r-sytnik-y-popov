@@ -8,5 +8,6 @@ namespace Distribution.DAL.Infrastructure.Interfaces
     public interface IUserRepository
     {
         public User GetById(int id);
+        public User Add(string fullName);
     }
 }

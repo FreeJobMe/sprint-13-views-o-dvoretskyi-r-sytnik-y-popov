@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Distribution.DAL.Infrastructure
 {
-    class BasketRepository : IBasketRepository
+    public class BasketRepository : IBasketRepository
     {
         private List<Basket> baskets = new List<Basket>();
 

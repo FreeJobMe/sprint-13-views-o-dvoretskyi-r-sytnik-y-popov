@@ -29,6 +29,7 @@ namespace Distribution
 			services.AddServerSideBlazor();
 			services.AddSingleton<IPositionRepository, PositionRepository>();
 			services.AddSingleton<IProductRepository, ProductRepository>();
+			services.AddSingleton<IBasketRepository, BasketRepository>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
