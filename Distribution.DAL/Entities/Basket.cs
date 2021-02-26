@@ -12,8 +12,8 @@ namespace Distribution.DAL.Entities
         
         public DateTime DateTime{ get; set; }
 
-        private List<Position> positions  = new List<Position>();
-        public Basket(int userId,List<Position> postions)
+        public List<Position> positions  = new List<Position>();
+        public Basket(List<Position> postions)
         {
             Id = nextId++;
             postions = this.positions;

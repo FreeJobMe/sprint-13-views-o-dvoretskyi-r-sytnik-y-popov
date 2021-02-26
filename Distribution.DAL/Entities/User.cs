@@ -12,7 +12,7 @@ namespace Distribution.DAL.Entities
 
         public string FullName { get; set; }
 
-        private List<Basket> baskets = new List<Basket>();
+        public List<Basket> baskets = new List<Basket>();
 
         public User(string fullName)
         {
