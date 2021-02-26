@@ -9,5 +9,6 @@ namespace Distribution.DAL.Infrastructure.Interfaces
     {
         public Shop GetById(int id);
         public Shop Add(string title);
+        public List<Shop> GetAllShops();
     }
 }

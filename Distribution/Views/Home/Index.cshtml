@@ -13,3 +13,16 @@
 	@(await Html.RenderComponentAsync<Sample>(RenderMode.ServerPrerendered))
 </div>
 
+<div class="text-center">
+
+	<form action="@Url.Action("Area", "Triangle")" method="post">
+		<button type="submit" class="btn btn-success">Sprint Tasks</button>
+	</form>
+
+	<p>Task 1: Show the info about a triangle</p>
+	<p><a href="/Product/Info">Information about products</a></p>
+
+
+
+</div>
+

@@ -52,5 +52,7 @@ namespace Distribution.DAL.Infrastructure
 			shops.Add(shop);
 			return shop;
         }
-    }
+
+		public List<Shop> GetAllShops() => shops;
+	}
 }

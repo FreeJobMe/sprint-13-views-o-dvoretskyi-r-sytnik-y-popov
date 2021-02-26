@@ -43,5 +43,7 @@ namespace Distribution.DAL.Infrastructure
 			products.Add(product);
 			return product;
         }
+
+		public List<Product> GetAllProducts() => products;
 	}
 }
