@@ -16,7 +16,7 @@ namespace Distribution.DAL.Entities
 
         public Basket(List<Position> positions)
         {
-            Id = nextId++;
+            Id = nextId++; 
             Positions = positions;
             DateTime = DateTime.Now;
         }
