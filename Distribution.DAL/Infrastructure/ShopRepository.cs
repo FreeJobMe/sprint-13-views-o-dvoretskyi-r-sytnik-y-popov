@@ -46,5 +46,11 @@ namespace Distribution.DAL.Infrastructure
 		}
         public Shop GetById(int id) => 
             shops.First(s => s.Id == id);
+		public Shop Add(string title)
+        {
+			var shop = new Shop(title);
+			shops.Add(shop);
+			return shop;
+        }
     }
 }

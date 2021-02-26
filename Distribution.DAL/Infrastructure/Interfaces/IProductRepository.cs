@@ -12,5 +12,7 @@ namespace Distribution.DAL.Infrastructure.Interfaces
 		public Product GetRandom();
 
 		public int GetProductCount();
+
+		public Product Add(string title, decimal price);
 	}
 }

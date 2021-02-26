@@ -22,5 +22,11 @@ namespace Distribution.DAL.Infrastructure
         }
         public Basket GetById(int id) =>
            baskets.First(u => u.Id == id);
+        public Basket Add(List<Position> positions)
+        {
+            var basket = new Basket(positions);
+            baskets.Add(basket);
+            return basket;
+        }
     }
 }

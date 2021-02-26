@@ -23,5 +23,12 @@ namespace Distribution.DAL.Infrastructure
 
 		public Order GetById(int id) =>
 			orders.First(p => p.Id == id);
+
+		public Order Add(Basket basket, Shop shop, string address)
+        {
+			var order = new Order(basket, shop, address);
+			orders.Add(order);
+			return order;
+        }
 	}
 }
