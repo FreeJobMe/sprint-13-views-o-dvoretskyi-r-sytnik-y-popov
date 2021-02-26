@@ -14,14 +14,14 @@ namespace Distribution.DAL.Infrastructure
         public UserRepository()
         {
             User.nextId = 1;
-            /*
-            users.AddRange(new List<User>()
-            {
-                new User("Sytnik Roman"),
-                new User("Popov Yurii"),
-                new User("Dvoretskyi Oleksandr")
-            });*/
-        }
+
+			users.AddRange(new List<User>()
+			{
+				new User("Sytnik Roman"),
+				new User("Popov Yurii"),
+				new User("Dvoretskyi Oleksandr")
+			});
+		}
 
         public User GetById(int id) =>
             users.First(u => u.Id == id);

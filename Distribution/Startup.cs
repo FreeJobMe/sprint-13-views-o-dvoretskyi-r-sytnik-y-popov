@@ -1,3 +1,5 @@
+using Distribution.DAL.Infrastructure;
+using Distribution.DAL.Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,8 @@ namespace Distribution
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
+			services.AddSingleton<IPositionRepository, PositionRepository>();
+			services.AddSingleton<IProductRepository, ProductRepository>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

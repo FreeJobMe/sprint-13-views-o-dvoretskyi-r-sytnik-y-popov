@@ -8,5 +8,6 @@ namespace Distribution.DAL.Infrastructure.Interfaces
     public interface IBasketRepository
     {
         public Basket GetById(int id);
+        Basket Add(List<Position> positions);
     }
 }

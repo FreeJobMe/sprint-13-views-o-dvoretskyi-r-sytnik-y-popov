@@ -10,6 +10,7 @@ namespace Distribution.DAL.Infrastructure
 	public class ProductRepository : IProductRepository
 	{
 		private List<Product> products = new List<Product>();
+		private Random random = new Random();
 
 		public ProductRepository()
 		{
@@ -32,7 +33,8 @@ namespace Distribution.DAL.Infrastructure
 			});
 		}
 
-		public Product GetById(int id) => 
-			products.First(p => p.Id == id);
+		public int GetProductCount() => products.Count;
+		public Product GetById(int id) => products.First(p => p.Id == id);
+		public Product GetRandom() => products[random.Next(products.Count - 1)];
 	}
 }

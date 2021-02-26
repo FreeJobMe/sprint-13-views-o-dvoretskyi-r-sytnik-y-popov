@@ -10,18 +10,40 @@ namespace Distribution.DAL.Infrastructure
     public class ShopRepository : IShopRepository
     {
         private List<Shop> shops = new List<Shop>();
-        public ShopRepository()
+		private IPositionRepository _positionRepository;
+		private IProductRepository _productRepository;
+		private Random random = new Random();
+		public ShopRepository(IPositionRepository positionRepository, IProductRepository productRepository)
         {
-            Shop.nextId = 1;
-            //shops.AddRange(new List<Shop>()
-            //{
-            //    new Shop("WellMart", new List<Position>()),
-            //    new Shop("Silpo", new List<Position>()),
-            //    new Shop("ATB", new List<Position>()),
-            //    new Shop("Furshet", new List<Position>()),
-            //    new Shop("Metro", new List<Position>())
-            //});
-        }
+			_positionRepository = positionRepository;
+			_productRepository = productRepository;
+
+			Shop.nextId = 1;
+
+			var newShops =	new List<Shop>()
+			{
+				new Shop("WellMart"),
+				new Shop("Silpo"),
+				new Shop("ATB"),
+				new Shop("Furshet"),
+				new Shop("Metro")
+			};
+
+			foreach (var newShop in newShops)
+			{
+				var selectedProduct = new List<Product>();
+				for (int i = 0, iLim = random.Next(3, _productRepository.GetProductCount()); i < iLim; i++)
+				{
+					var product = _productRepository.GetRandom();
+					if (!selectedProduct.Contains(product))
+					{
+						selectedProduct.Add(product);
+						newShop.Positions.Add(_positionRepository.Add(product, random.Next(20)));
+					}
+				}
+			}
+			shops.AddRange(newShops);
+		}
         public Shop GetById(int id) => 
             shops.First(s => s.Id == id);
     }

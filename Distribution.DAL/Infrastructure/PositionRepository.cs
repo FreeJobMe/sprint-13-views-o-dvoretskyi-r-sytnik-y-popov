@@ -23,5 +23,12 @@ namespace Distribution.DAL.Infrastructure
 
 		public Position GetById(int id) =>
 			positions.First(p => p.Id == id);
+
+		public Position Add(Product product, int amount)
+		{
+			var position = new Position(product, amount);
+			positions.Add(position);
+			return position;
+		}
 	}
 }
