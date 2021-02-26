@@ -1,4 +1,5 @@
 ﻿using Distribution.DAL.Entities;
+using Distribution.DAL.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Distribution.DAL.Infrastructure
 {
-	public class ProductRepository
+	public class ProductRepository : IProductRepository
 	{
 		private List<Product> products = new List<Product>();
 
