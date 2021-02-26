@@ -26,6 +26,7 @@ namespace Distribution
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
+			services.AddServerSideBlazor();
 			services.AddSingleton<IPositionRepository, PositionRepository>();
 			services.AddSingleton<IProductRepository, ProductRepository>();
 		}
@@ -55,6 +56,7 @@ namespace Distribution
 				endpoints.MapControllerRoute(
 					name: "default",
 					pattern: "{controller=Home}/{action=Index}/{id?}");
+				endpoints.MapBlazorHub();
 			});
 		}
 	}

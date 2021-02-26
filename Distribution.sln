@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Distribution.UI", "Distribution\Distribution.UI.csproj", "{D0FD9848-03E1-4398-AD3E-FEF155224884}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distribution.UI", "Distribution\Distribution.UI.csproj", "{D0FD9848-03E1-4398-AD3E-FEF155224884}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Distribution.BLL", "Distribution.BLL\Distribution.BLL.csproj", "{8394C309-0A8D-4B45-A32B-1804B49E3BAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distribution.BLL", "Distribution.BLL\Distribution.BLL.csproj", "{8394C309-0A8D-4B45-A32B-1804B49E3BAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Distribution.DAL", "Distribution.DAL\Distribution.DAL.csproj", "{617C8A5D-3021-40F9-B52E-D74B4A74BF2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Distribution.DAL", "Distribution.DAL\Distribution.DAL.csproj", "{617C8A5D-3021-40F9-B52E-D74B4A74BF2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

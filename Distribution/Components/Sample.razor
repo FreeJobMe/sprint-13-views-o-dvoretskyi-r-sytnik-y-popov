@@ -1,0 +1,10 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+
+<h3>Sample</h3>
+
+<input @bind="message" @bind:event="oninput" />
+<p>OutputTitle: @message</p>
+
+@code {
+	string message;
+}
