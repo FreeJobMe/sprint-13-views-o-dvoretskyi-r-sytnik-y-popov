@@ -1,3 +1,5 @@
+using Distribution.BLL.Services;
+using Distribution.BLL.Services.Interfaces;
 using Distribution.DAL.Infrastructure;
 using Distribution.DAL.Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -30,6 +32,8 @@ namespace Distribution
 			services.AddSingleton<IPositionRepository, PositionRepository>();
 			services.AddSingleton<IProductRepository, ProductRepository>();
 			services.AddSingleton<IBasketRepository, BasketRepository>();
+			services.AddSingleton<IProductService, ProductService>();
+			services.AddSingleton<IShopRepository, ShopRepository>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
