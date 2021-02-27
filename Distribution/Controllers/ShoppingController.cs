@@ -26,12 +26,7 @@ namespace Distribution.UI.Controllers
                 var shoppingListOfUser = new ShoppingListModel() { FullName = user.FullName };
                 foreach (var basket in user.Baskets)
                 {
-                    var positions = new Dictionary<string, int>();
-                    foreach (var position in basket.Positions)
-                    {
-                        positions.Add(position.Product.Title, position.Amount);
-                    }
-                    shoppingListOfUser.BasketPositions.Add(positions);
+                    shoppingListOfUser.Baskets.Add(basket.BasketItems);
                 }
                 shoppingListOfUsers.Add(shoppingListOfUser);
             }
