@@ -1,4 +1,6 @@
-﻿using Distribution.DAL.Infrastructure.Interfaces;
+﻿using Distribution.DAL.Entities;
+using Distribution.DAL.Infrastructure;
+using Distribution.DAL.Infrastructure.Interfaces;
 using Distribution.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,13 +12,13 @@ namespace Distribution.UI.Controllers
 {
 	public class ProductController : Controller
 	{
-		private IPositionRepository _positionRepository;
-		private IProductRepository _productRepository;
-		private IShopRepository _shopRepository;
+		private IRepository<Product> _productRepository;
+		private IRepository<Shop> _shopRepository;
 
-		public ProductController(IPositionRepository positionRepository, IProductRepository productRepository, IShopRepository shopRepository)
+		public ProductController(
+			IRepository<Product> productRepository,
+			IRepository<Shop> shopRepository)
 		{
-			_positionRepository = positionRepository;
 			_productRepository = productRepository;
 			_shopRepository = shopRepository;
 		}
@@ -24,11 +26,11 @@ namespace Distribution.UI.Controllers
 		public IActionResult Info()
 		{
 			var productsShops = new List<ProductShopsModel>();
-			foreach (var product in _productRepository.GetAllProducts())
+			foreach (var product in _productRepository.GetAll())
 			{
 				var productShops = new ProductShopsModel() { Title = product.Title, 
 															 Price = product.Price};
-				foreach (var shop in _shopRepository.GetAllShops())
+				foreach (var shop in _shopRepository.GetAll())
 				{
 					var amount = shop.Positions.FirstOrDefault(p => p.Product == product)?.Amount ?? 0;
 					if (amount > 0)

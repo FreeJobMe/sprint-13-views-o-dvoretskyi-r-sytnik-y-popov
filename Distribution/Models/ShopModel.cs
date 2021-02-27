@@ -9,8 +9,6 @@ namespace Distribution.Models
 	public class ShopModel
 	{
 		public string Title { get; set; }
-		public List<Position> Positions { get; set; }
-
-		public Dictionary<string, int> ProductAmounts { get; set; } = new Dictionary<string, int>();
+		public List<Position> Positions { get; set; } = new List<Position>();
 	}
 }

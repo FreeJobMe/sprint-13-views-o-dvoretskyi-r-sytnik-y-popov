@@ -9,11 +9,14 @@ namespace Distribution.BLL.Services
 {
 	public class ProductService : IProductService
 	{
-		private IPositionRepository _positionRepository;
-		private IProductRepository _productRepository;
-		private IShopRepository _shopRepository;
+		private IRepository<Position> _positionRepository;
+		private IRepository<Product> _productRepository;
+		private IRepository<Shop> _shopRepository;
 
-		public ProductService(IPositionRepository positionRepository, IProductRepository productRepository, IShopRepository shopRepository)
+		public ProductService(
+			IRepository<Position> positionRepository,
+			IRepository<Product> productRepository,
+			IRepository<Shop> shopRepository)
 		{
 			_positionRepository = positionRepository;
 			_productRepository = productRepository;

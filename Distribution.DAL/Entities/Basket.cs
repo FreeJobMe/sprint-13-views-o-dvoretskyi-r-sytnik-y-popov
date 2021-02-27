@@ -4,21 +4,15 @@ using System.Text;
 
 namespace Distribution.DAL.Entities
 {
-    public class Basket
-    {
-        public static int nextId;
+	public class Basket : Entity
+	{
+		public DateTime DateTime{ get; set; }
+		public List<Position> Positions { get; set; } = new List<Position>();
 
-        public int Id { get; set; }
-        
-        public DateTime DateTime{ get; set; }
-
-        public List<Position> Positions { get; set; }
-
-        public Basket(List<Position> positions)
-        {
-            Id = nextId++; 
-            Positions = positions;
-            DateTime = DateTime.Now;
-        }
-    }
+		public Basket(List<Position> positions)
+		{
+			Positions = positions;
+			DateTime = DateTime.Now;
+		}
+	}
 }

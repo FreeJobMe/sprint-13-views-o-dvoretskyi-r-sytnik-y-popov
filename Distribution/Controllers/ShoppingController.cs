@@ -1,5 +1,5 @@
-﻿using Distribution.DAL.Infrastructure.Interfaces;
-using Distribution.UI.Models;
+﻿using Distribution.DAL.Entities;
+using Distribution.DAL.Infrastructure.Interfaces;
 using Distribution.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,16 +11,17 @@ namespace Distribution.UI.Controllers
 {
     public class ShoppingController : Controller
     {
-        private IUserRepository _userRepository;
+        private IRepository<User> _userRepository;
 
-        public ShoppingController(IUserRepository userRepository)
+        public ShoppingController(IRepository<User> userRepository)
         {
             _userRepository = userRepository;
         }
+
         public IActionResult ShoppingList()
         {
             var shoppingListOfUsers = new List<ShoppingListModel>();
-            foreach (var user in _userRepository.GetAllUsers())
+            foreach (var user in _userRepository.GetAll())
             {
                 var shoppingListOfUser = new ShoppingListModel() { FullName = user.FullName };
                 foreach (var basket in user.Baskets)
