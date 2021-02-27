@@ -1,0 +1,50 @@
+﻿@model List<ShopModel>
+
+@{
+    ViewData["Title"] = "Our supermarkets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int shopsCount = 0;
+    @foreach(var market in Model)
+    {
+        shopsCount++;
+    }
+    
+}
+
+<h1>Our supermarkets</h1>
+<h2>There are 
+    @shopsCount
+   markets</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th>
+              
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var shop in Model)
+        {
+            <tr>
+                <td class="text-left">
+                   @shop.Title
+                </td>
+            </tr>
+           
+            @foreach (var position in shop.ProductAmounts)
+            {
+               
+                <tr>
+                    <td class="text-sm-left">
+                        <p>   @position.Key - @position.Value , Total Cost=@(shop.Positions.Where(x=>x.Product.Title==position.Key).FirstOrDefault().Product.Price*position.Value) </p> 
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
