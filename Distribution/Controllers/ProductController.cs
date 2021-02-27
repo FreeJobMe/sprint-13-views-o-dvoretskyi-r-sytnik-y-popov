@@ -1,6 +1,5 @@
 ﻿using Distribution.DAL.Infrastructure.Interfaces;
 using Distribution.Models;
-using Distribution.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
