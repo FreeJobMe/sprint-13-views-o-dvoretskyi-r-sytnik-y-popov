@@ -36,12 +36,12 @@
                 </td>
             </tr>
            
-            @foreach (var position in shop.ProductAmounts)
+            @foreach (var position in shop.Positions)
             {
                
                 <tr>
                     <td class="text-sm-left">
-                        <p>   @position.Key - @position.Value , Total Cost=@(shop.Positions.Where(x=>x.Product.Title==position.Key).FirstOrDefault().Product.Price*position.Value) </p> 
+                        <p>   @position.Product.Title - @position.Amount, Total Cost=@(position.Amount * position.Product.Price) </p> 
                     </td>
                 </tr>
             }

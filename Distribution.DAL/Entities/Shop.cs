@@ -4,18 +4,14 @@ using System.Text;
 
 namespace Distribution.DAL.Entities
 {
-    public class Shop
+    public class Shop : Entity
     {
-        public static int nextId;
-        public int Id { get; set; }
         public string Title { get; set; }
-        public List<Position> Positions { get; set; }
+        public List<Position> Positions { get; set; } = new List<Position>();
 
         public Shop(string title)
         {
-            Id = nextId++; 
             Title = title;
-            Positions = new List<Position>();
-        }
+         }
     }
 }

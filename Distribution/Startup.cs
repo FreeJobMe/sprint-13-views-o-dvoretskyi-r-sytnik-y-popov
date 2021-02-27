@@ -29,11 +29,8 @@ namespace Distribution
 		{
 			services.AddControllersWithViews();
 			services.AddServerSideBlazor();
-			services.AddSingleton<IPositionRepository, PositionRepository>();
-			services.AddSingleton<IProductRepository, ProductRepository>();
-			services.AddSingleton<IBasketRepository, BasketRepository>();
-			services.AddSingleton<IShopRepository, ShopRepository>();
-			services.AddSingleton<IUserRepository, UserRepository>();
+			services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
+			services.AddSingleton<InitialData>();
 			services.AddSingleton<IProductService, ProductService>();
 			services.AddTransient<ITimeService, TimeService>();
 		}
