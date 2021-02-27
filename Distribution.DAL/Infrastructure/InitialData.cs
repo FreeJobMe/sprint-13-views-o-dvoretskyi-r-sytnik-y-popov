@@ -10,6 +10,7 @@ namespace Distribution.DAL.Infrastructure
 	public class InitialData
 	{
 		private IRepository<Basket> _basketRepository;
+		private IRepository<BasketItem> _basketItemRepository;
 		private IRepository<Position> _positionRepository;
 		private IRepository<Product> _productRepository;
 		private IRepository<Shop> _shopRepository;
@@ -19,14 +20,16 @@ namespace Distribution.DAL.Infrastructure
 
 		public InitialData(
 			IRepository<Basket> basketRepository,
-			IRepository<Position> positionRepository, 
-			IRepository<Product> productRepository, 
+			IRepository<BasketItem> basketItemRepository,
+			IRepository<Position> positionRepository,
+			IRepository<Product> productRepository,
 			IRepository<Shop> shopRepository,
 			IRepository<User> userRepository)
 		{
+			_basketRepository = basketRepository;
+			_basketItemRepository = basketItemRepository;
 			_positionRepository = positionRepository;
 			_productRepository = productRepository;
-			_basketRepository = basketRepository;
 			_shopRepository = shopRepository;
 			_userRepository = userRepository;
 		}
@@ -58,16 +61,16 @@ namespace Distribution.DAL.Infrastructure
 		{
 			foreach (var userName in File.ReadLines("../Distribution.DAL/Infrastructure/InitialDataFiles/InitialUserData.txt"))
 			{
-				var desiredPositions = new List<Position>();
+				var desiredBasketItems = new List<BasketItem>();
 
 				foreach (var product in _productRepository.GetAll())
 					if (random.NextDouble() > 0.7)
-						desiredPositions.Add(_positionRepository.Add(new Position(product, random.Next(5, 20))));
+						desiredBasketItems.Add(_basketItemRepository.Add(new BasketItem(product, random.Next(5, 20))));
 
-				if (desiredPositions.Count > 0)
+				if (desiredBasketItems.Count > 0)
 					_userRepository.Add(new User(
 						userName,
-						new List<Basket>() { _basketRepository.Add(new Basket(desiredPositions)) }));
+						new List<Basket>() { _basketRepository.Add(new Basket(desiredBasketItems)) }));
 			}
 		}
 	}
