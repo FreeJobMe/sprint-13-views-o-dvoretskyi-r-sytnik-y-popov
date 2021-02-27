@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Distribution.DAL.Entities
+﻿namespace Distribution.DAL.Entities
 {
 	public interface IEntity
 	{
