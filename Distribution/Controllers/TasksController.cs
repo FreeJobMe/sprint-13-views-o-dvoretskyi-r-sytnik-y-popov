@@ -56,4 +56,18 @@ namespace Distribution.UI.Controllers
 			return View("ShoppingCarts", usersBaskets);
 		}
 	}
+
+    public class TasksController : Controller
+    {
+        public IActionResult SprintTasks()
+        {
+            return View();
+        }
+        public IActionResult Greetings()
+        {
+            ViewBag.Value = "C# Marathon!";
+            ViewBag.Greeting = "Welcome to our project!";
+            return View();
+        }
+    }
 }
