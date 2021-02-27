@@ -29,8 +29,8 @@ namespace Distribution.UI.Controllers
 
 		public IActionResult ShoppingCart()
 		{
-			return View("ShoppingCart", 
-				(_shopRepository.GetAll().ToDictionary(s => s.Id, s => s.Title), 
+			return View("ShoppingCart",
+				(_shopRepository.GetAll().ToDictionary(s => s.Id, s => s.Title),
 				_productRepository.GetAll().ToDictionary(s => s.Id, s => s.Title)));
 		}
 
@@ -55,19 +55,15 @@ namespace Distribution.UI.Controllers
 			}
 			return View("ShoppingCarts", usersBaskets);
 		}
+		public IActionResult SprintTasks()
+		{
+			return View();
+		}
+		public IActionResult Greetings()
+		{
+			ViewBag.Value = "C# Marathon!";
+			ViewBag.Greeting = "Welcome to our project!";
+			return View();
+		}
 	}
-
-    public class TasksController : Controller
-    {
-        public IActionResult SprintTasks()
-        {
-            return View();
-        }
-        public IActionResult Greetings()
-        {
-            ViewBag.Value = "C# Marathon!";
-            ViewBag.Greeting = "Welcome to our project!";
-            return View();
-        }
-    }
 }

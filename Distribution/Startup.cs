@@ -31,7 +31,6 @@ namespace Distribution
 			services.AddServerSideBlazor();
 			services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
 			services.AddSingleton<InitialData>();
-			services.AddSingleton<IProductService, ProductService>();
 			services.AddTransient<ITimeService, TimeService>();
 		}
 
