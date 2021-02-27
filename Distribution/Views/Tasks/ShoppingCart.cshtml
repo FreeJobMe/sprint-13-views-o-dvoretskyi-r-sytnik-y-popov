@@ -1,0 +1,59 @@
+﻿@if (@ViewBag.Message != null)
+{
+	<h1>@ViewBag.Message</h1>
+}
+else
+{
+
+@model (Dictionary<int, string>, Dictionary<int, string>)
+
+
+<form action="@Url.Action("AddOrder", "Tasks")" method="post">
+	<div class="form-group">
+
+		<label for="fullName">Input your fullname:</label>
+		<input class="form-control" type="text" name="fullName">
+
+		<label for="address">Input your address:</label>
+		<input class="form-control" type="text" name="address">
+
+		<select class="form-control" name="shopId">
+			@foreach (var shop in Model.Item1)
+			{
+				<option value="@shop.Key">@shop.Value</option>
+			}
+		</select>
+		
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="dataTime" value="option1" checked>
+			<label class="form-check-label" for="dataTime">
+
+			</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="dataTime" value="option2">
+			<label class="form-check-label" for="dataTime">
+
+			</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="dataTime" value="option3">
+			<label class="form-check-label" for="dataTime">
+
+			</label>
+		</div>
+
+		<div class="form-group">
+			<select multiple class="form-control" name="productId">
+				@foreach (var product in Model.Item2)
+				{
+					<option value="@product.Key">@product.Value</option>
+				}
+			</select>
+		</div>
+
+		<button type="submit" class="btn-success">Send</button>
+	</div>
+</form>
+
+}

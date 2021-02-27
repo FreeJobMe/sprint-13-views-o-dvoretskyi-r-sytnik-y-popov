@@ -19,7 +19,7 @@ namespace Distribution.DAL.Infrastructure
 
 		public TEntity Add(TEntity entity)
 		{
-			entity.SetId(nextId++);
+			entity.Id = nextId++;
 			entities.Add(entity);
 			return entity;
 		}
