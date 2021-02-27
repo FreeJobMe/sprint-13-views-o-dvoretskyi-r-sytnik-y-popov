@@ -6,6 +6,6 @@ namespace Distribution.DAL.Entities
 {
 	public interface IEntity
 	{
-		public void SetId(int id);
+		public int Id { get; set; }
 	}
 }

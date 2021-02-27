@@ -6,15 +6,15 @@ namespace Distribution.DAL.Entities
 {
 	public class Order : Entity
 	{
-		public Basket Basket { get; set; }
 		public Shop Shop { get; set; }
 		public string Address { get; set; }
+		public List<Position> Baskets { get; set; }
 
-		public Order(Basket basket, Shop shop, string address)
+		public Order(Shop shop, string address, List<Position> baskets)
 		{
-			Basket = basket;
 			Shop = shop;
 			Address = address;
+			Baskets = baskets;
 		}
 	}
 }
