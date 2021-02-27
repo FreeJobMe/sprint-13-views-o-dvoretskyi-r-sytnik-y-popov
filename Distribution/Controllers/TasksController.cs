@@ -93,14 +93,15 @@ namespace Distribution.UI.Controllers
 					Title = product.Title,
 					Price = product.Price
 				};
+
 				foreach (var shop in _shopRepository.GetAll())
 				{
 					var amount = shop.Positions.FirstOrDefault(p => p.Product == product)?.Amount ?? 0;
 					if (amount > 0)
 						productShops.ShopProductAmounts.Add(shop.Title, amount);
 				}
-				if (productShops.ShopProductAmounts.Count > 0)
-					productsShops.Add(productShops);
+
+				productsShops.Add(productShops);
 			}
 			return View(productsShops);
 		}
