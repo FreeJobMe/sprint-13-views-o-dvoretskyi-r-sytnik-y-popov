@@ -29,8 +29,8 @@ namespace Distribution.UI.Controllers
 
 		public IActionResult ShoppingCart()
 		{
-			return View("ShoppingCart", 
-				(_shopRepository.GetAll().ToDictionary(s => s.Id, s => s.Title), 
+			return View("ShoppingCart",
+				(_shopRepository.GetAll().ToDictionary(s => s.Id, s => s.Title),
 				_productRepository.GetAll().ToDictionary(s => s.Id, s => s.Title)));
 		}
 
@@ -40,17 +40,16 @@ namespace Distribution.UI.Controllers
 			ViewBag.Message = "Your products will be shipped at: " + address + ". Bon appetite, " + fullName + "!";
 			return View("ShoppingCart");
 		}
-
-        public IActionResult SprintTasks()
-        {
-            return View();
-        }
-        public IActionResult Greetings()
-        {
-            ViewBag.Value = "C# Marathon!";
-            ViewBag.Greeting = "Welcome to our project!";
-            return View();
-        }
+    public IActionResult SprintTasks()
+    {
+        return View();
+    }
+    public IActionResult Greetings()
+    {
+        ViewBag.Value = "C# Marathon!";
+        ViewBag.Greeting = "Welcome to our project!";
+        return View();
+    }
 
 		public IActionResult ShoppingList()
 		{
@@ -106,5 +105,4 @@ namespace Distribution.UI.Controllers
 			return View(productsShops);
 		}
 	}
-
 }

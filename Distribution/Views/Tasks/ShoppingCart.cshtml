@@ -1,59 +1,42 @@
 ﻿@if (@ViewBag.Message != null)
 {
-	<h1>@ViewBag.Message</h1>
+    <h1>@ViewBag.Message</h1>
 }
 else
 {
 
-@model (Dictionary<int, string>, Dictionary<int, string>)
+    @model (Dictionary<int, string>, Dictionary<int, string>)
+
+    @using (Html.BeginForm("AddOrder", "Tasks", FormMethod.Post))
+    {
+        <div class="form-group">
+
+            <p>
+                @Html.Label("fullName", "Input your fullname:")<br />
+                @Html.TextBox("fullName")
+            </p>
+            <p>
+                @Html.Label("address", "Input your address:")<br />
+                @Html.TextBox("address")
+            </p>
+
+            @Html.DropDownListFor(x => x.Item1.Keys, new SelectList(Model.Item1.Values), "Choose market")
+            <p></p>
+
+            @Html.RadioButton("dateTime", @DateTime.Now.AddDays(1).ToString(), true)
+            @Html.Label("dateTime", @DateTime.Now.AddDays(1).ToString())<br />
+
+            @Html.RadioButton("dateTime", @DateTime.Now.AddDays(2).ToString())
+            @Html.Label("dateTime", @DateTime.Now.AddDays(2).ToString())<br />
+
+            @Html.RadioButton("dateTime", @DateTime.Now.AddDays(3).ToString())
+            @Html.Label("dateTime", @DateTime.Now.AddDays(3).ToString())<br />
 
 
-<form action="@Url.Action("AddOrder", "Tasks")" method="post">
-	<div class="form-group">
+            @Html.ListBoxFor(x => x.Item2.Keys, new MultiSelectList(Model.Item2.Values))<br />
+            <p></p>
 
-		<label for="fullName">Input your fullname:</label>
-		<input class="form-control" type="text" name="fullName">
-
-		<label for="address">Input your address:</label>
-		<input class="form-control" type="text" name="address">
-
-		<select class="form-control" name="shopId">
-			@foreach (var shop in Model.Item1)
-			{
-				<option value="@shop.Key">@shop.Value</option>
-			}
-		</select>
-		
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="dataTime" value="option1" checked>
-			<label class="form-check-label" for="dataTime">
-
-			</label>
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="dataTime" value="option2">
-			<label class="form-check-label" for="dataTime">
-
-			</label>
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="radio" name="dataTime" value="option3">
-			<label class="form-check-label" for="dataTime">
-
-			</label>
-		</div>
-
-		<div class="form-group">
-			<select multiple class="form-control" name="productId">
-				@foreach (var product in Model.Item2)
-				{
-					<option value="@product.Key">@product.Value</option>
-				}
-			</select>
-		</div>
-
-		<button type="submit" class="btn-success">Send</button>
-	</div>
-</form>
-
+            <button type="submit" class="btn-success">Send</button>
+        </div>
+    }
 }

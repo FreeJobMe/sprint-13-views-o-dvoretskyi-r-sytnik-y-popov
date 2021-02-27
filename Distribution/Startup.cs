@@ -25,7 +25,6 @@ namespace Distribution
 			services.AddControllersWithViews();
 			services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
 			services.AddSingleton<InitialData>();
-			services.AddSingleton<IProductService, ProductService>();
 			services.AddTransient<ITimeService, TimeService>();
 		}
 
