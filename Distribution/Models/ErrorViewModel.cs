@@ -1,5 +1,3 @@
-using System;
-
 namespace Distribution.Models
 {
 	public class ErrorViewModel

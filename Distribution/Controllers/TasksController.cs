@@ -1,10 +1,10 @@
 ﻿using Distribution.DAL.Entities;
 using Distribution.DAL.Infrastructure.Interfaces;
+using Distribution.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Distribution.UI.Controllers
 {
@@ -40,30 +40,69 @@ namespace Distribution.UI.Controllers
 			ViewBag.Message = "Your products will be shipped at: " + address + ". Bon appetite, " + fullName + "!";
 			return View("ShoppingCart");
 		}
+    public IActionResult SprintTasks()
+    {
+        return View();
+    }
+    public IActionResult Greetings()
+    {
+        ViewBag.Value = "C# Marathon!";
+        ViewBag.Greeting = "Welcome to our project!";
+        return View();
+    }
 
-		public IActionResult ShoppingCarts()
+		public IActionResult ShoppingList()
 		{
-			var usersBaskets = new Dictionary<string, Dictionary<int, DateTime>>();
+			var shoppingListOfUsers = new List<ShoppingListModel>();
 			foreach (var user in _userRepository.GetAll())
 			{
-				var baskets = new Dictionary<int, DateTime>();
-				foreach (var basket in user.Baskets.Where(b => b.OrderId == 0))
-					baskets.Add(basket.Id, basket.DateTime);
-
-				if (baskets.Count > 0)
-					usersBaskets.Add(user.FullName, baskets);
+				var shoppingListOfUser = new ShoppingListModel() { FullName = user.FullName };
+				foreach (var basket in user.Baskets)
+				{
+					shoppingListOfUser.Baskets.Add(basket.BasketItems);
+				}
+				shoppingListOfUsers.Add(shoppingListOfUser);
 			}
-			return View("ShoppingCarts", usersBaskets);
+			return View(shoppingListOfUsers);
 		}
-		public IActionResult SprintTasks()
+
+		public IActionResult SuperMarkets()
 		{
-			return View();
+			var shopModels = new List<ShopModel>();
+			foreach (var shop in _shopRepository.GetAll())
+			{
+				var shopModel = new ShopModel() { Title = shop.Title };
+
+				foreach (var position in shop.Positions)
+					if (position.Amount > 0)
+						shopModel.Positions.Add(position);
+
+				shopModels.Add(shopModel);
+			}
+			return View(shopModels);
 		}
-		public IActionResult Greetings()
+
+		public IActionResult ProductInfo()
 		{
-			ViewBag.Value = "C# Marathon!";
-			ViewBag.Greeting = "Welcome to our project!";
-			return View();
+			var productsShops = new List<ProductShopsModel>();
+			foreach (var product in _productRepository.GetAll())
+			{
+				var productShops = new ProductShopsModel()
+				{
+					Title = product.Title,
+					Price = product.Price
+				};
+
+				foreach (var shop in _shopRepository.GetAll())
+				{
+					var amount = shop.Positions.FirstOrDefault(p => p.Product == product)?.Amount ?? 0;
+					if (amount > 0)
+						productShops.ShopProductAmounts.Add(shop.Title, amount);
+				}
+
+				productsShops.Add(productShops);
+			}
+			return View(productsShops);
 		}
 	}
 }
