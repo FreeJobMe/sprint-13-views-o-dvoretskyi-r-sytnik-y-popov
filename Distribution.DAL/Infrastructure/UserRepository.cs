@@ -40,14 +40,14 @@ namespace Distribution.DAL.Infrastructure
 					if (!selectedProduct.Contains(product))
 					{
 						selectedProduct.Add(product);
-						desiredPositions.Add(_positionRepository.Add(product, random.Next(20)));
+						desiredPositions.Add(_positionRepository.Add(product, random.Next(1, 20)));
 					}
 				}
 				user.Baskets.Add(_basketRepository.Add(desiredPositions));
 			}
 		}
-
-        public User GetById(int id) => users.First(u => u.Id == id);
+		public List<User> GetAllUsers() => users;
+		public User GetById(int id) => users.First(u => u.Id == id);
 		public User Add(string fullName)
 		{
 			var user = new User(fullName);

@@ -1,0 +1,39 @@
+﻿@model List<ShoppingListModel>
+@inject Distribution.BLL.Services.Interfaces.ITimeService Timer
+@{
+    ViewData["Title"] = "ShoppingList";
+}
+
+<h1 align="center">Shopping list of users</h1>
+<table class="table">
+    <tbody>
+        @foreach (var shoppingList in Model)
+        {
+            <tr class="text-center" bgcolor="#f2f2f2"><td><b>@shoppingList.FullName</b></td><td></td><td></td><td></td></tr>
+            @for (int i = 0; i < shoppingList.BasketPositions.Count; i++)
+            {
+                <tr class="text-center">
+                    <th></th>
+                    <th><b>List#@(i + 1)</b></th>
+                    <th><b>Title</b></th>
+                    <th><b>Amount</b></th>
+                </tr>
+                @foreach (var position in shoppingList.BasketPositions[i])
+                {
+                    <tr class="text-center">
+                        <td></td>
+                        <td></td>
+                        <td>@position.Key</td>
+                        <td>@position.Value</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+<marquee scrolldelay="30" truespeed behavior="alternate" direction="right" bgcolor="#ffcc00">
+    <h2><strong>It's time to shopping!</strong></h2>
+</marquee>
+<h5 align="center">@Timer.GetTimeForTomorrow()</h5>
+
+

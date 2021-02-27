@@ -9,5 +9,6 @@ namespace Distribution.DAL.Infrastructure.Interfaces
     {
         public User GetById(int id);
         public User Add(string fullName);
+        public List<User> GetAllUsers();
     }
 }

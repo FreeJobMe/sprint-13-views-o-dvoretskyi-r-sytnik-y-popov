@@ -32,8 +32,10 @@ namespace Distribution
 			services.AddSingleton<IPositionRepository, PositionRepository>();
 			services.AddSingleton<IProductRepository, ProductRepository>();
 			services.AddSingleton<IBasketRepository, BasketRepository>();
-			services.AddSingleton<IProductService, ProductService>();
 			services.AddSingleton<IShopRepository, ShopRepository>();
+			services.AddSingleton<IUserRepository, UserRepository>();
+			services.AddSingleton<IProductService, ProductService>();
+			services.AddTransient<ITimeService, TimeService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
