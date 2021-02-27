@@ -38,7 +38,7 @@ namespace Distribution.DAL.Infrastructure
 					if (!selectedProduct.Contains(product))
 					{
 						selectedProduct.Add(product);
-						newShop.Positions.Add(_positionRepository.Add(product, random.Next(20)));
+						newShop.Positions.Add(_positionRepository.Add(product, random.Next(1, 20)));
 					}
 				}
 			}
