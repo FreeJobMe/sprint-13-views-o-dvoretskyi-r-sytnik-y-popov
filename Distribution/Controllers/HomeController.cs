@@ -14,7 +14,7 @@ namespace Distribution.Controllers
 	{
 		private readonly ILogger<HomeController> _logger;
 		private InitialData _initialData;
-		private bool isInitializedData = false;
+		private static bool isInitializedData = false;
 
 		public HomeController(ILogger<HomeController> logger, InitialData initialData)
 		{

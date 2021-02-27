@@ -1,33 +1,12 @@
 ﻿@namespace Distribution.UI.Components
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Sprint 13";
 }
 
+            
 <div class="text-center">
-	<h1 class="display-4">Welcome</h1>
-	<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
-</div> 
-
-<div class="text-center">
-	@(await Html.RenderComponentAsync<Sample>(RenderMode.ServerPrerendered))
+    <h1 class="display-4">Views</h1>
+    <p>Introduce <a href="https://github.com/FreeJobMe/sprint-13-views-o-dvoretskyi-r-sytnik-y-popov">our project</a>.</p>
 </div>
 
-<div class="text-center">
-
-	<form action="@Url.Action("Area", "Triangle")" method="post">
-		<button type="submit" class="btn btn-success">Sprint Tasks</button>
-	</form>
-
-	<p>Task 1: Show the info about a triangle</p>
-	<p><a href="/Product/Info">Information about products</a></p>
-
-	<p><a href="/Shop/Info">Information about markets</a></p>
-
-	<p><a href="/Home/InitialData">Initiate data</a></p>
-
-	<p><a href="/Shopping/ShoppingList">Shopping list of users</a></p>
-
-
-</div>
 
