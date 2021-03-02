@@ -1,0 +1,13 @@
+Bread,10
+Milk,11
+Cheese,140
+Sausage,110
+Potato,7
+Banana,23
+Tomato,25
+Candy,75
+Cake,50
+Ice Cream,30
+Cola,25
+Fanta,20
+Sprite,20

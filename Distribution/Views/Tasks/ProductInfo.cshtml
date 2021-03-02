@@ -1,0 +1,38 @@
+﻿@model List<ProductShopsModel>
+
+<h1 align="center">Information about products</h1>
+<table class="table">
+    <tbody>
+        @foreach (var productShops in Model)
+        {
+            <tr class="green">
+                <th></th>
+                <th><b>Price</b></th>
+                <th><b>Total amount</b></th>
+                <th><b>Total cost</b></th>
+            </tr>
+            <tr class="text-center">
+                @{ int totalAmount = productShops.ShopProductAmounts.Values.Sum();}
+                <td><b>@productShops.Title</b></td>
+                <td>@productShops.Price</td>
+                <td>@totalAmount</td>
+                <td>@(productShops.Price * totalAmount)</td>
+            </tr>
+            <tr class="yellow">
+                <td></td>
+                <th><b>Markets</b></th>
+                <th><b>Amount</b></th>
+                <th><b>Cost</b></th>
+            </tr>
+            @foreach (var shop in productShops.ShopProductAmounts)
+            {
+                <tr class="text-center">
+                    <td></td>
+                    <td>@shop.Key</td>
+                    <td>@shop.Value</td>
+                    <td>@(productShops.Price * shop.Value)</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

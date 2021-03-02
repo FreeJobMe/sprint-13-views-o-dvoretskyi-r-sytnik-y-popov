@@ -1,0 +1,32 @@
+﻿@model List<ShopModel>
+
+@{
+    ViewData["Title"] = "Our supermarkets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 align="center">Our Supermarkets</h1>
+<h2>There are @Model.Count markets:</h2>
+
+<table class="table">
+    <tbody>
+        @foreach (var shop in Model)
+        {
+            <tr class="green">
+                <td bgcolor="#f2f2f2"><b>@shop.Title</b></td>
+                <th><b>Title</b></th>
+                <th><b>Amount</b></th>
+                <th><b>Total cost</b></th>
+            </tr>
+            @foreach (var position in shop.Positions)
+            {
+                <tr class="text-center">
+                    <td></td>
+                    <td>@position.Product.Title</td>
+                    <td>@position.Amount</td>
+                    <td>@(position.Amount * position.Product.Price)</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

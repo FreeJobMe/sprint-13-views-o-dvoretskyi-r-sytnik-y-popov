@@ -1,0 +1,42 @@
+﻿@if (@ViewBag.Message != null)
+{
+    <h1>@ViewBag.Message</h1>
+}
+else
+{
+
+    @model (Dictionary<int, string>, Dictionary<int, string>)
+
+    @using (Html.BeginForm("AddOrder", "Tasks", FormMethod.Post))
+    {
+        <div class="form-group">
+
+            <p>
+                @Html.Label("fullName", "Input your fullname:")<br />
+                @Html.TextBox("fullName")
+            </p>
+            <p>
+                @Html.Label("address", "Input your address:")<br />
+                @Html.TextBox("address")
+            </p>
+
+            @Html.DropDownListFor(x => x.Item1.Keys, new SelectList(Model.Item1.Values), "Choose market")
+            <p></p>
+
+            @Html.RadioButton("dateTime", @DateTime.Now.AddDays(1).ToString(), true)
+            @Html.Label("dateTime", @DateTime.Now.AddDays(1).ToString())<br />
+
+            @Html.RadioButton("dateTime", @DateTime.Now.AddDays(2).ToString())
+            @Html.Label("dateTime", @DateTime.Now.AddDays(2).ToString())<br />
+
+            @Html.RadioButton("dateTime", @DateTime.Now.AddDays(3).ToString())
+            @Html.Label("dateTime", @DateTime.Now.AddDays(3).ToString())<br />
+
+
+            @Html.ListBoxFor(x => x.Item2.Keys, new MultiSelectList(Model.Item2.Values))<br />
+            <p></p>
+
+            <button type="submit" class="btn-success">Send</button>
+        </div>
+    }
+}
